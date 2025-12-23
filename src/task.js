@@ -1,4 +1,4 @@
-// Task management module
+//Task management module
 class Task {
 	constructor(title, description) {
 		this.id = Date.now();
@@ -7,7 +7,7 @@ class Task {
 		this.status = 'todo';
 		this.createdAt = new Date();
 		this.priority = 'medium';
-
+    this.labels = [];
 	}
 
 	updateStatus(status) {
@@ -16,6 +16,13 @@ class Task {
 			this.status = status;
 		}
 	}
+	addLabel(label) {
+		if (this.labels.length >= 5) return; // Исправление по фидбеку
+		if (label && !this.labels.includes(label)) {
+			this.labels.push(label);
+		}
+	}
+
 	setPriority(priority) {
 		const validPriorities = ['low', 'medium', 'high', 'urgent';
 		if (validPriorities.includes(priority)) {
@@ -25,7 +32,7 @@ class Task {
 		return false;
 	}
 
-
 }
 
 module.exports = Task;
+
